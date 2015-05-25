@@ -13,6 +13,10 @@ Example configuration:
     vendor: 'github' //your company
   }
 }
+
+//accessible in the handler
+request.pre.apiVersion
+
 ```
 
 Background:
