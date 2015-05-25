@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "lab -a code -t 100 -L"
+    "test": "lab"
   },
   "repository": {
     "type": "git",
