@@ -10,7 +10,7 @@ Example configuration:
   register: require('hapi-api-versioning'),
   options: {
     defaultVersion: '1',
-    vendor: 'bc24'
+    vendor: 'github' //your company
   }
 }
 ```
