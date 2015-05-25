@@ -1,0 +1,36 @@
+{
+  "name": "hapi-api-versioning",
+  "version": "0.0.1",
+  "description": "Media type approach to versioning your api",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "lab"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StarpTech/hapi-api-versioning.git"
+  },
+  "keywords": [
+    "hapi",
+    "plugin",
+    "versioning",
+    "api"
+  ],
+  "peerDependencies": {
+    "hapi": ">=8.x.x"
+  },
+  "devDependencies": {
+    "code": "1.x.x",
+    "hapi": "8.x.x",
+    "lab": "5.x.x"
+  },
+  "author": "Dustin Deus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StarpTech/hapi-api-versioning/issues"
+  },
+  "homepage": "https://github.com/StarpTech/hapi-api-versioning"
+}
