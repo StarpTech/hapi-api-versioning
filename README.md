@@ -4,4 +4,22 @@ Api versioning plugin for [**hapi**](https://github.com/hapijs/hapi)
 npm install hapi-api-versioning
 ```
 
+Example configuration:
+```js
+{
+  register: require('hapi-api-versioning'),
+  options: {
+    defaultVersion: '1',
+    vendor: 'bc24'
+  }
+}
+```
+
+Background:
+
+[Github approach in the media api](https://developer.github.com/v3/media/)
+
+[Using the Accept Header to version your API](http://labs.qandidate.com/blog/2014/10/16/using-the-accept-header-to-version-your-api)
+
+
 [![Build Status](https://travis-ci.org/StarpTech/hapi-api-versioning.svg)](https://travis-ci.org/StarpTech/hapi-api-versioning)
