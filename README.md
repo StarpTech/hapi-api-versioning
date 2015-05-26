@@ -19,6 +19,9 @@ request.pre.apiVersion
 
 ```
 
+TODO
+- [ ] Routing (optional)
+
 Background:
 
 [Github approach in the media api](https://developer.github.com/v3/media/)
