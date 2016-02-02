@@ -1,13 +1,13 @@
 {
   "name": "hapi-api-versioning",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Media type approach to versioning your api",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "lab"
+    "test": "./node_modules/lab/bin/lab -a code -v -t 100 -L"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,10 @@
     "versioning",
     "api"
   ],
+  "engines": {
+    "node": ">=4.0",
+    "npm": ">=2.0"
+  },
   "peerDependencies": {
     "hapi": ">=8.x.x"
   },
@@ -32,5 +36,8 @@
   "bugs": {
     "url": "https://github.com/StarpTech/hapi-api-versioning/issues"
   },
-  "homepage": "https://github.com/StarpTech/hapi-api-versioning"
+  "homepage": "https://github.com/StarpTech/hapi-api-versioning",
+  "dependencies": {
+    "joi": "^7.2.3"
+  }
 }
