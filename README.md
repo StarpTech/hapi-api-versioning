@@ -13,11 +13,11 @@ Example configuration:
   register: require('hapi-api-versioning'),
   options: {
     defaultVersion: '1',
-    vendor: 'github' //your company
+    vendor: 'github' // your company
   }
 }
 
-//accessible in the handler
+// accessible in the handler
 request.pre.apiVersion
 
 ```

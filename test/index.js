@@ -1,52 +1,52 @@
 // Load modules
 
-var Code = require('code');
-var Hapi = require('hapi');
-var Lab = require('lab');
+const Code = require('code');
+const Hapi = require('hapi');
+const Lab = require('lab');
 
 
 // Declare internals
 
-var internals = {};
+const internals = {
+    plugin: {
+        register: require('../'),
+        options: {
+            defaultVersion: 1,
+            vendor: 'github'
+        }
+    }
+};
 
 
 // Test shortcuts
 
-var lab = exports.lab = Lab.script();
-var describe = lab.describe;
-var it = lab.it;
-var expect = Code.expect;
+const lab = exports.lab = Lab.script();
+const describe = lab.describe;
+const it = lab.it;
+const expect = Code.expect;
 
 
-describe('Scarecrow', function () {
+describe('Scarecrow', () => {
 
-    it('request with a specific api version', function (done) {
+    it('request with a specific api version', (done) => {
 
-        var server = new Hapi.Server();
+        const server = new Hapi.Server();
         server.connection();
 
-        var plugin = {
-          register: require('../'),
-          options: {
-            defaultVersion: 1,
-            vendor: 'github'
-          }
-        };
-
-        server.register(plugin, function (err) {
+        server.register(internals.plugin, (err) => {
 
             // Add test route
 
             server.route({
-              path: '/apiVersion',
-              method: 'GET',
-              handler: function (request, reply) {
-                expect(request.pre.apiVersion).to.equal(2);
-                return reply();
-              }
+                path: '/apiVersion',
+                method: 'GET',
+                handler: (request, reply) => {
+                    expect(request.pre.apiVersion).to.equal(2);
+                    return reply();
+                }
             });
 
-            var req = {
+            const req = {
                 method: 'GET',
                 url: 'http://example.com/apiVersion',
                 headers: {
@@ -54,39 +54,33 @@ describe('Scarecrow', function () {
                 }
             };
 
-            server.inject(req, function (res) {
-                done();
+            server.inject(req, (res) => {
+
+                return done();
             });
         });
     });
 
-    it('Request with an invalid api version should fallback to default version', function (done) {
+    it('Request with an invalid api version should fallback to default version', (done) => {
 
-        var server = new Hapi.Server();
+        const server = new Hapi.Server();
         server.connection();
 
-        var plugin = {
-          register: require('../'),
-          options: {
-            defaultVersion: 1,
-            vendor: 'github'
-          }
-        };
+        server.register(internals.plugin, (err) => {
 
-        server.register(plugin, function (err) {
+            // Add test route
 
-          // Add test route
+            server.route({
+                path: '/apiVersion',
+                method: 'GET',
+                handler: (request, reply) => {
 
-          server.route({
-            path: '/apiVersion',
-            method: 'GET',
-            handler: function (request, reply) {
-              expect(request.pre.apiVersion).to.equal(1);
-              return reply();
-            }
-          });
+                    expect(request.pre.apiVersion).to.equal(1);
+                    return reply();
+                }
+            });
 
-            var req = {
+            const req = {
                 method: 'GET',
                 url: 'http://example.com/apiVersion',
                 headers: {
@@ -94,77 +88,65 @@ describe('Scarecrow', function () {
                 }
             };
 
-            server.inject(req, function (res) {
+            server.inject(req, (res) => {
+
                 done();
             });
         });
     });
 
-    it('None accept header should fallback to default version', function (done) {
+    it('None accept header should fallback to default version', (done) => {
 
-        var server = new Hapi.Server();
+        const server = new Hapi.Server();
         server.connection();
 
-        var plugin = {
-          register: require('../'),
-          options: {
-            defaultVersion: 1,
-            vendor: 'github'
-          }
-        };
+        server.register(internals.plugin, (err) => {
 
-        server.register(plugin, function (err) {
+            // Add test route
 
-          // Add test route
+            server.route({
+                path: '/apiVersion',
+                method: 'GET',
+                handler: (request, reply) => {
 
-          server.route({
-            path: '/apiVersion',
-            method: 'GET',
-            handler: function (request, reply) {
-              expect(request.pre.apiVersion).to.equal(1);
-              return reply();
-            }
-          });
+                    expect(request.pre.apiVersion).to.equal(1);
+                    return reply();
+                }
+            });
 
-            var req = {
+            const req = {
                 method: 'GET',
                 url: 'http://example.com/apiVersion',
                 headers: {}
             };
 
-            server.inject(req, function (res) {
-                done();
+            server.inject(req, (res) => {
+
+                return done();
             });
         });
     });
 
-    it('request with a specific two or more digit api version', function (done) {
+    it('request with a specific two or more digit api version', (done) => {
 
-        var server = new Hapi.Server();
+        const server = new Hapi.Server();
         server.connection();
 
-        var plugin = {
-          register: require('../'),
-          options: {
-            defaultVersion: 1,
-            vendor: 'github'
-          }
-        };
+        server.register(internals.plugin, (err) => {
 
-        server.register(plugin, function (err) {
+            // Add test route
 
-          // Add test route
+            server.route({
+                path: '/apiVersion',
+                method: 'GET',
+                handler: (request, reply) => {
 
-          server.route({
-            path: '/apiVersion',
-            method: 'GET',
-            handler: function (request, reply) {
-              expect(request.pre.apiVersion).to.equal(321);
-              return reply();
-            }
-          });
+                    expect(request.pre.apiVersion).to.equal(321);
+                    return reply();
+                }
+            });
 
-            var req = {
+            const req = {
                 method: 'GET',
                 url: 'http://example.com/apiVersion',
                 headers: {
@@ -172,8 +154,9 @@ describe('Scarecrow', function () {
                 }
             };
 
-            server.inject(req, function (res) {
-                done();
+            server.inject(req, (res) => {
+
+                return done();
             });
         });
     });
